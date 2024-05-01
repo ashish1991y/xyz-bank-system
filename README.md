@@ -49,7 +49,8 @@ Manages configurations across services dynamically.
 
 ## Database
 
-Uses MySQL for data storage and management.
+Uses MySQL for data storage and management. Update database configuration under xyzbank-config-repo/config-repo/application.yml and push to git repository or
+put configuration on project local application.yml
 
 ## Postman Collection
 
