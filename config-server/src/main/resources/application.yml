@@ -1,0 +1,13 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/ashish1991y/xyzbank-config-repo
+          clone-on-start: true
+          default-label: main  # or 'master' depending on default branch
+          search-paths: config-repo # Optionally specify a search path if needed
