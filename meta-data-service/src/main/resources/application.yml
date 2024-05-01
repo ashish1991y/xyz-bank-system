@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: meta-data-service
+
+  config:
+    import: "configserver:http://localhost:8888"
+
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: CONFIG-SERVER
+      profile: default
+      label: main
