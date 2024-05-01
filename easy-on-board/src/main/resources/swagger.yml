@@ -1,0 +1,200 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+  - url: http://localhost:8080
+    description: Generated server url
+paths:
+  /onboarding/register:
+    post:
+      tags:
+        - user-controller
+      operationId: registerUser
+      parameters:
+        - name: userData
+          in: query
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+                - document
+              type: object
+              properties:
+                document:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/GenericResponseUserRegisterResponse'
+  /eob/account/overview:
+    get:
+      tags:
+        - account-controller
+      operationId: userOverview
+      parameters:
+        - name: userName
+          in: header
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/GenericResponseAccountOverview'
+  /eob/account/login:
+    get:
+      tags:
+        - account-controller
+      operationId: login
+      parameters:
+        - name: userName
+          in: header
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/GenericResponseLogin'
+  /auth/token:
+    post:
+      tags:
+        - auth-controller
+      operationId: tokenGen
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+                - userName
+                - password
+              type: object
+              properties:
+                userName:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/GenericAuthTokenResponse'
+
+components:
+  schemas:
+    GenericResponseUserRegisterResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserRegisterResponse'
+        error:
+          $ref: '#/components/schemas/GlobalErrorResponse'
+        statusCode:
+          type: integer
+          format: int32
+        validationErrors:
+          type: object
+          additionalProperties:
+            type: string
+    GenericAuthTokenResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              jwtToken:
+                type: string
+        statusCode:
+          type: integer
+          format: int32
+    GlobalErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        statusCode:
+          type: integer
+          format: int32
+        reason:
+          type: string
+    UserRegisterResponse:
+      type: object
+      properties:
+        userName:
+          type: string
+        password:
+          type: string
+    AuthTokenResponse:
+      type: object
+      properties:
+        token:
+          type: string
+    AccountOverview:
+      type: object
+      properties:
+        accountNumber:
+          type: string
+        accountType:
+          type: string
+        balance:
+          type: number
+        currency:
+          type: string
+    GenericResponseAccountOverview:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/AccountOverview'
+        error:
+          $ref: '#/components/schemas/GlobalErrorResponse'
+        statusCode:
+          type: integer
+          format: int32
+        validationErrors:
+          type: object
+          additionalProperties:
+            type: string
+    GenericResponseLogin:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Login'
+        error:
+          $ref: '#/components/schemas/GlobalErrorResponse'
+        statusCode:
+          type: integer
+          format: int32
+        validationErrors:
+          type: object
+          additionalProperties:
+            type: string
+    Login:
+      type: object
+      properties:
+        message:
+          type: string
