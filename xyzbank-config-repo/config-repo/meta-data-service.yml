@@ -1,0 +1,13 @@
+server:
+  port: 8084
+  servlet:
+    context-path: /meta
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create
