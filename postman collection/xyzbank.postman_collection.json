@@ -1,0 +1,259 @@
+{
+	"info": {
+		"_postman_id": "35c33775-e6d0-41af-8d85-3cfef0dce0ac",
+		"name": "xyzbank",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2179097"
+	},
+	"item": [
+		{
+			"name": "token service",
+			"item": [
+				{
+					"name": "http://localhost:8080/auth/token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"Nadeem1\",\r\n  \"password\": \"R]kvPbXMsczM\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/auth/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "easy on board",
+			"item": [
+				{
+					"name": "login endpoint",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJOYWRlZW0xIiwiaWF0IjoxNzE0NTczODcwLCJleHAiOjE3MTQ1NzU2NzB9.YX5BB33JcVrmAdjbG1NegeECVbXW1GmdVDcTNLifob4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/eob/account/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"eob",
+								"account",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user account overview",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJOYWRlZW0xIiwiaWF0IjoxNzE0NTgyODk5LCJleHAiOjE3MTQ1ODQ2OTl9.Ij2qDxEW4PG_HdoWDIReUrvDj7kfFpy2o6bBpZmC8_s",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/eob/account/overview",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"eob",
+								"account",
+								"overview"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user registration",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJOYWRlZW0xIiwiaWF0IjoxNzE0NTczODcwLCJleHAiOjE3MTQ1NzU2NzB9.YX5BB33JcVrmAdjbG1NegeECVbXW1GmdVDcTNLifob4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "userData",
+									"value": "{\n  \"name\": \"ashish\",\n  \"address\": \"blabla\",\n  \"dob\": \"26/10/2001\",\n  \"username\": \"ashish22\",\n  \"country\": \"Netherlands\",\n  \"documentType\": \"DRIVING_LICENCE\"\n}",
+									"type": "text"
+								},
+								{
+									"key": "document",
+									"type": "file",
+									"src": "/C:/Users/ashis/OneDrive/Pictures/1.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/eob/onboarding/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"eob",
+								"onboarding",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "meta service collection",
+			"item": [
+				{
+					"name": "http://localhost:8080/meta/country/",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJOYWRlZW0xIiwiaWF0IjoxNzE0NTc4NjExLCJleHAiOjE3MTQ1ODA0MTF9.w_jncfUnoJloub5Tnwl5dYDitjR-VstBkkooEYLZPlw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/meta/country/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"meta",
+								"country",
+								""
+							]
+						},
+						"description": "get all country list"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/meta/country/",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJOYWRlZW0xIiwiaWF0IjoxNzE0NTc4NjExLCJleHAiOjE3MTQ1ODA0MTF9.w_jncfUnoJloub5Tnwl5dYDitjR-VstBkkooEYLZPlw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Germany\",\r\n    \"countryCode\":\"DE\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/meta/country/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"meta",
+								"country",
+								""
+							]
+						},
+						"description": "Add country"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
