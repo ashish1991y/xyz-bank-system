@@ -1,0 +1,42 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+
+        - id: easy-on-board
+          uri: lb://EASY-ON-BOARD
+          predicates:
+            - Path=/eob/onboarding/**
+            - Path=/eob/swagger/**
+            - Path=/eob/swagger-ui/**
+
+        - id: easy-on-board
+          uri: lb://EASY-ON-BOARD
+          predicates:
+            - Path=/eob/account/**
+          filters:
+            - AuthenticationFilter
+
+        - id: meta-data-service
+          uri: lb://META-DATA-SERVICE
+          predicates:
+              - Path=/meta/**
+          filters:
+              - AuthenticationFilter
+
+        - id: authentication-service
+          uri: lb://AUTHENTICATION-SERVICE
+          predicates:
+            - Path=/auth/**
+
+  application:
+    name: API-GATEWAY
+
+eureka:
+  client:
+    service-url:
+      defaultZone : http://localhost:8761/eureka/
+
+springdoc:
+  swagger-ui:
+    path: /swagger
