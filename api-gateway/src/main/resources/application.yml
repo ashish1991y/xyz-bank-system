@@ -7,8 +7,6 @@ spring:
           uri: lb://EASY-ON-BOARD
           predicates:
             - Path=/eob/onboarding/**
-            - Path=/eob/swagger/**
-            - Path=/eob/swagger-ui/**
 
         - id: easy-on-board
           uri: lb://EASY-ON-BOARD
