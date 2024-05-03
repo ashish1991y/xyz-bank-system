@@ -29,6 +29,7 @@ Handles new user registrations and logins.
 ### Meta Data Service
 Maintains essential data like country lists and user roles.
 - **GET /country**: Returns a list of countries.
+- **POST /country**: Add new contry.
 
 ## Supporting Services
 
