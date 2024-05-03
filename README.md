@@ -23,7 +23,8 @@ Our application uses a central Git repository for all service configurations cal
 ### Easy-on-board
 Handles new user registrations and logins.
 - **POST /register**: Registers a new user.
-- **POST /login**: Logs in a user and returns a token.
+- **GET /login**: Logs in a user.
+- **GET /overview**: User accoutn overview.
 
 ### Meta Data Service
 Maintains essential data like country lists and user roles.
